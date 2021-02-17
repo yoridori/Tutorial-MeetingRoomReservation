@@ -1,0 +1,17 @@
+version: "3"
+ 
+services:
+  db:
+    # build: ./db/containers
+    image: postgres:13-alpine
+    container_name: meeting
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=meeting
+      - POSTGRES_PASSWORD=meeting1234
+      - PGPASSWORD=meeting1234
+      - POSTGRES_DB=meeting
+      - DATABASE_HOST=localhost
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
